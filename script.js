@@ -183,14 +183,4 @@ if (bookBtn) {
     });
 }
 
-// ==============================
-// PHOTO GRID LIGHTBOX EFFECT
-// ==============================
-document.querySelectorAll('.photo-item').forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        gsap.to(item, { scale: 1.02, duration: 0.4, ease: 'power2.out' });
-    });
-    item.addEventListener('mouseleave', () => {
-        gsap.to(item, { scale: 1, duration: 0.4, ease: 'power2.out' });
-    });
-});
+// Gallery hover scaling removed to keep photo framing stable (no visual crop).

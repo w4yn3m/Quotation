@@ -575,7 +575,8 @@ a {
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: clamp(280px, 32vw, 430px);
+    aspect-ratio: 3 / 4;
+    min-height: 0;
     background: rgba(255,255,255,0.035);
     border: 1px solid var(--glass-border);
 }
@@ -587,16 +588,17 @@ a {
 /* Removed tall/wide classes to maintain uniform alignment */
 
 .photo-img {
-    transition: transform 0.8s var(--ease);
-    height: clamp(280px, 32vw, 430px) !important;
-    max-height: clamp(280px, 32vw, 430px);
+    transition: transform 0.45s var(--ease);
+    height: 100% !important;
+    max-height: 100%;
     width: 100%;
     object-fit: contain;
     display: block;
+    background: rgba(0,0,0,0.3);
 }
 
 .photo-item:hover .photo-img {
-    transform: scale(1.025);
+    transform: none;
 }
 
 .photo-overlay {
@@ -1340,6 +1342,9 @@ a {
         margin-bottom: 32px;
         padding: 8px 14px;
         letter-spacing: 1.4px;
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
     }
 
     .hero-title {
@@ -1362,6 +1367,7 @@ a {
         max-width: 320px;
         margin-bottom: 32px;
         line-height: 1.65;
+        padding: 0 4px;
     }
 
     .hero-subtitle br {
@@ -1381,6 +1387,7 @@ a {
         align-items: center;
         gap: 10px;
         margin-bottom: 56px;
+        width: 100%;
     }
     
     .detail-chip {
@@ -1396,18 +1403,19 @@ a {
     }
     
     .photo-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 14px;
     }
     
     .photo-item {
-        min-height: auto;
+        aspect-ratio: 3 / 4;
+        min-height: 0;
     }
     
     .photo-img {
         object-position: center;
-        height: auto !important;
-        max-height: none;
+        height: 100% !important;
+        max-height: 100%;
         object-fit: contain;
     }
     
@@ -1455,6 +1463,10 @@ a {
 
 /* Small Mobile */
 @media (max-width: 380px) {
+    .photo-grid {
+        grid-template-columns: 1fr;
+    }
+
     .reasons-row {
         grid-template-columns: 1fr;
     }
