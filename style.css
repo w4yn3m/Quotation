@@ -553,7 +553,6 @@ a {
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 240px;
     gap: 16px;
     margin-top: 48px;
 }
@@ -563,11 +562,14 @@ a {
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    aspect-ratio: 1 / 1;
 }
 
-.photo-tall {
-    grid-row: span 2;
+.photo-item img {
+    object-position: center;
 }
+
+/* Removed tall/wide classes to maintain uniform alignment */
 
 .photo-img {
     transition: transform 0.8s var(--ease);
