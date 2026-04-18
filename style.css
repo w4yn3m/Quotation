@@ -222,10 +222,16 @@ a {
 
 .hero-bg-layer {
     position: absolute;
-    inset: 0;
+    inset: -50px;
     background: url('assets/hero.jpg') center/cover no-repeat;
-    opacity: 0.15;
+    opacity: 0.18;
     filter: blur(2px);
+    animation: ken-burns 20s ease-in-out infinite alternate;
+}
+
+@keyframes ken-burns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15); }
 }
 
 .hero-grain {
@@ -246,8 +252,8 @@ a {
 .hero-glow-1 {
     width: 600px;
     height: 600px;
-    background: #f06292;
-    opacity: 0.12;
+    background: radial-gradient(circle, #f06292 0%, transparent 70%);
+    opacity: 0.18;
     top: -150px;
     right: -150px;
 }
@@ -255,7 +261,7 @@ a {
 .hero-glow-2 {
     width: 450px;
     height: 450px;
-    background: #1a237e;
+    background: radial-gradient(circle, #4a148c 0%, transparent 70%);
     opacity: 0.15;
     bottom: -100px;
     left: -120px;
@@ -298,9 +304,10 @@ a {
 .hero-title {
     font-family: 'Playfair Display', serif;
     font-weight: 800;
-    line-height: 1.25;
+    line-height: 1.1;
     margin-bottom: 32px;
     padding-bottom: 10px;
+    letter-spacing: -0.02em;
 }
 
 .hero-line {
@@ -319,6 +326,8 @@ a {
     font-weight: 400;
     font-style: italic;
     word-break: keep-all;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
 }
 
 .hero-line-3 {
@@ -327,6 +336,7 @@ a {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     word-break: break-word;
+    text-shadow: 0 10px 40px var(--gold-glow);
 }
 
 .hero-accent {
@@ -337,10 +347,11 @@ a {
 .hero-subtitle {
     font-size: 1.05rem;
     color: var(--text-secondary);
-    max-width: 560px;
+    max-width: 600px;
     margin: 0 auto 48px;
     font-weight: 300;
-    line-height: 1.7;
+    line-height: 1.8;
+    text-wrap: balance;
 }
 
 .hero-details-bar {
@@ -553,7 +564,6 @@ a {
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 240px;
     gap: 16px;
     margin-top: 48px;
 }
@@ -563,11 +573,12 @@ a {
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    aspect-ratio: 1 / 1;
 }
 
-.photo-tall {
-    grid-row: span 2;
-}
+.photo-item img {
+    object-position: center;
+/* Removed tall/wide classes to maintain uniform alignment */
 
 .photo-img {
     transition: transform 0.8s var(--ease);
