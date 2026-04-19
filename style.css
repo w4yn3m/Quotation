@@ -1401,6 +1401,11 @@ a {
     .services-grid, .album-row, .video-row {
         grid-template-columns: 1fr;
     }
+
+    .teaser-row {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px;
+    }
     
     .photo-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1413,10 +1418,10 @@ a {
     }
     
     .photo-img {
-        object-position: center;
+        object-position: center !important;
         height: 100% !important;
         max-height: 100%;
-        object-fit: contain;
+        object-fit: cover !important;
     }
     
     .reasons-row {
