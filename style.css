@@ -1292,8 +1292,8 @@ a {
     }
     
     .photo-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
+        column-count: 2;
+        column-gap: 16px;
     }
 }
 
@@ -1408,20 +1408,17 @@ a {
     }
     
     .photo-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
+        column-count: 2;
+        column-gap: 14px;
     }
     
     .photo-item {
-        aspect-ratio: 3 / 4;
-        min-height: 0;
+        margin-bottom: 14px;
     }
     
     .photo-img {
-        object-position: center !important;
-        height: 100% !important;
-        max-height: 100%;
-        object-fit: cover !important;
+        width: 100%;
+        height: auto !important;
     }
     
     .reasons-row {
@@ -1469,7 +1466,7 @@ a {
 /* Small Mobile */
 @media (max-width: 380px) {
     .photo-grid {
-        grid-template-columns: 1fr;
+        column-count: 1;
     }
 
     .reasons-row {
