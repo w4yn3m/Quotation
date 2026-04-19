@@ -12,9 +12,20 @@ window.addEventListener('load', () => {
 // ==============================
 // GSAP ANIMATIONS
 // ==============================
-gsap.registerPlugin(ScrollTrigger);
+if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 function initAnimations() {
+    if (!window.gsap || !window.ScrollTrigger) {
+        // Fail-safe: keep content visible if animation libs are blocked.
+        document.querySelectorAll('.reveal-card').forEach((el) => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
+        return;
+    }
+
     // Hero entrance
     const heroTL = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
@@ -118,6 +129,22 @@ function initAnimations() {
             ease: 'power3.out'
         });
     });
+
+    // Animate subsection headers and footer blocks that sit after Services.
+    document.querySelectorAll('.subsection-header, .footer-top, .footer-bar, .contact-chip').forEach((node) => {
+        gsap.from(node, {
+            scrollTrigger: {
+                trigger: node,
+                start: 'top 90%'
+            },
+            y: 26,
+            opacity: 0,
+            duration: 0.75,
+            ease: 'power2.out'
+        });
+    });
+
+    ScrollTrigger.refresh();
 }
 
 // ==============================
